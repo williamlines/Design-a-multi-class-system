@@ -7,10 +7,6 @@ class Diary
   def store_entry(entry) 
     @entries << entry
   end
-
-  def reading_time(wpm, entry)
-    # Calculates time to read entry with wpm
-  end
   
   def list_contacts
     # List every @mobile
@@ -22,6 +18,8 @@ class Diary
   
   def best_entries(wpm, minutes)
     #returns possible entries that can be read in given time at given speed
+    max_words = wpm * minutes
+    @entries.select {|entry| entry.word_count <= max_words }
   end
 
   def add_task(task) # task is an instance of Todo

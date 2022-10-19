@@ -8,6 +8,11 @@ class DiaryEntry
   attr_reader :title, :contents, :mobile
 
   def word_count
-    # returns word count
+    @contents.split(" ").length
   end
+  
+  #def reading_time(wpm)
+  #  # round to bottom - leave as is
+  #  word_count / wpm
+  #end
 end

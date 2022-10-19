@@ -168,6 +168,7 @@ combinations that reflect the ways in which the system will be used._
 # EXAMPLE
 
 # 1. Store and retrieve diary entry
+#DONE
 diary = Diary.new
 entry1 = DiaryEntry.new("title1", "contents", "07333333333")
 diary.store_entry(entry1)
@@ -218,13 +219,17 @@ a more granular level of detail._
 # EXAMPLE
 
 # 1. unit testing DiaryEntry
-
 entry1 = DiaryEntry.new("title1", "contents1", "07111111111")
-expect(entry1.title.to eq "title1"
-expect(entry1.contents).to eq "contents1"
-expect(entry1.mobile).to eq "07111111111"
+entry1.title # => "title1"
+entry1.contents # =>  "contents1"
+entry1.mobile # =>  "07111111111"
 
-
+# 2. can return word count for contents
+entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
+entry1.word_count # =>  5
+#  #3. can return reading time
+# entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
+# entry1.reading_time(5) ## => 1
 ```
 
 _Encode each example as a test. You can add to the above list as you go._
