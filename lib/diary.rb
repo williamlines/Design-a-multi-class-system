@@ -10,7 +10,9 @@ class Diary
   
   def list_contacts
     # List every @mobile
-    @entries.map { |entry| entry.mobile }
+    contacts_array = @entries.map { |entry| entry.mobile }
+    raise "No contacts" if contacts_array == []
+    contacts_array
   end
 
   def read_diary(entry)
@@ -19,8 +21,13 @@ class Diary
   
   def best_entries(wpm, minutes)
     #returns possible entries that can be read in given time at given speed
+   
+
     max_words = wpm * minutes
-    @entries.select {|entry| entry.word_count <= max_words }
+    possibilities = @entries.select {|entry| entry.word_count <= max_words }
+    
+    raise 'No suitable entries' if possibilities.empty?
+    possibilities
   end
 
   # task is an instance of Todo

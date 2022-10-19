@@ -22,6 +22,18 @@ RSpec.describe "Integration" do
   end
 
   context "storage and retrieval based on time" do
+    it "fails when no possible entry" do
+      diary = Diary.new
+      entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
+      diary.store_entry(entry1)
+      expect {diary.best_entries(3, 1)}.to raise_error 'No suitable entries'
+    end
+    it "fails when wpm is zero" do
+      diary = Diary.new
+      entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
+      diary.store_entry(entry1)
+      expect {diary.best_entries(0, 1)}.to raise_error 'No suitable entries'
+    end
     it 'can retrieve best entry when only one possible entry' do
       diary = Diary.new
       entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
@@ -59,10 +71,11 @@ RSpec.describe "Integration" do
     end
   end
   context "can return all mobile numbers" do
-    xit 'returns 0 of 0 mobiles' do
-  
+    it 'returns 0 of 0 mobiles' do
+      diary = Diary.new
+      expect {diary.list_contacts}.to raise_error "No contacts"
     end
-    
+
     it 'returns 1 of 1 mobiles' do
       diary = Diary.new
       entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
