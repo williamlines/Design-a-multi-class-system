@@ -227,9 +227,7 @@ entry1.mobile # =>  "07111111111"
 # 2. can return word count for contents
 entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
 entry1.word_count # =>  5
-#  #3. can return reading time
-# entry1 = DiaryEntry.new("title1", "1 2 3 4 5", "07111111111")
-# entry1.reading_time(5) ## => 1
+
 ```
 
 _Encode each example as a test. You can add to the above list as you go._

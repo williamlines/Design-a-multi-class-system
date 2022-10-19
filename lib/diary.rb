@@ -1,7 +1,7 @@
 class Diary
   def initialize
     @entries = []
-    #@task_list
+    @task_list = []
   end
 
   def store_entry(entry) 
@@ -10,6 +10,7 @@ class Diary
   
   def list_contacts
     # List every @mobile
+    @entries.map { |entry| entry.mobile }
   end
 
   def read_diary(entry)
@@ -22,11 +23,13 @@ class Diary
     @entries.select {|entry| entry.word_count <= max_words }
   end
 
-  def add_task(task) # task is an instance of Todo
-    # adds task to @task_list
+  # task is an instance of Todo
+  def add_task(task)
+    @task_list << task
   end
 
   def read_tasks
-    # Returns task.task for all tasks in @task_list
+    # Returns all tasks in @task_list
+    @task_list
   end
 end 

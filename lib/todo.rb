@@ -1,8 +1,7 @@
 class Todo
-  def initialize(task) # task is a  string
+  def initialize(task)
+    @task = task
   end
 
-  def task
-    # Returns @task
-  end
+  attr_reader :task
 end
